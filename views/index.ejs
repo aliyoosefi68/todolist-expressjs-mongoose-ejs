@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/all.min.css" />
+    <title>لیست کارهای من</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>لیست کارهای من</h1>
+      <form action="/add" method="POST" class="add-part">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="افزودن تسک شما"
+        />
+        <button type="submit">+</button>
+      </form>
+      <div class="tasks">
+        <div class="done">
+          <h2>کارهایی که انجام شده</h2>
+          <ul>
+            <%taskdone.forEach(task=>{%>
+
+            <li data-id="<%=task._id%>">
+              <span> <%=task.title %> </span>
+              <div class="buttons">
+                <button class="remove-task">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </div>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+        <div class="pending">
+          <h2>کارهایی که باید انجام بدم</h2>
+          <ul>
+            <%taskspending.forEach(task=>{%>
+
+            <li data-title="<%=task.title%>" data-id="<%=task._id%>">
+              <span><%=task.title %></span>
+              <div class="buttons">
+                <button class="remove-task">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+                <button class="done-task">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+              </div>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!---------------------------------------- scripts --------------------------------------------------->
+    <script src="assets/js/all.min.js"></script>
+    <script src="assets/js/muscript.js"></script>
+  </body>
+</html>
